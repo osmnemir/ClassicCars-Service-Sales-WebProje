@@ -1,0 +1,402 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/tema2/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="~/tema2/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/tema2/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="~/tema2/css/style.css">
+
+    <title>Classic Car's</title>
+</head>
+
+<body>
+
+
+    <div class="site-mobile-menu">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    
+    <header class="site-navbar" role="banner">
+        <div class="d-flex justify-content-end" style="margin-top: 10px; font-family: 'Arial', sans-serif;">
+            <form class="col-12 col-lg-auto me-3" role="search" asp-action="Ara" asp-controller="Arac" method="get">
+                
+                    <input name="q" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Araç Ara..." aria-label="Search">
+
+            </form>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                
+                <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a asp-action="Index" class="text-white mb-0">Classic Car's</a></h1>
+                </div>
+                
+                <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+
+                        <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+                            <li class="active"><a asp-action="Index" asp-controller="Home"><span>Ana Sayfa</span></a></li>
+
+                            <li><a asp-controller="Arac" asp-action="List"><span>Tüm Araçlar</span></a></li>
+
+                            <li><a asp-controller="Contact" asp-action="View"><span>İletişim</span></a></li>
+                           
+
+                            @if (Context.User.Identity.IsAuthenticated)
+                            {
+                                <li><a asp-controller="Account" asp-action="Index"><span>Hesabım</span></a></li>
+                                <li><a asp-controller="Account" asp-action="Logout"><span>Oturumu Kapat</span></a></li>
+                               @*  <a asp-controller="Account" asp-action="Index" ><i class="bi bi-person"></i> Hesabım</a>
+                                <a asp-controller="Account" asp-action="Logout" ><i class="bi bi-box-arrow-right"></i> Oturumu Kapat</a> *@
+                            }
+                            else
+                            {
+                                <li><a asp-controller="Account" asp-action="Login"><span>Giriş</span></a></li>
+                                <li><a asp-controller="Account" asp-action="Register"><span>Kaydol</span></a></li>
+                               @*  <a asp-controller="Account" asp-action="Login" ><i class="bi bi-door-open"></i> Giriş</a>
+                                <a asp-controller="Account" asp-action="Register" ><i class="bi bi-person-plus"></i> Kaydol</a> *@
+                            }
+                            
+
+                          
+
+
+                        </ul>
+                    </nav>
+                </div>
+
+
+                <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </header>
+    <div class="hero" style="background-image: url('/tema2/images/re.jpg');"></div>
+
+    <div class="container">
+        @Html.Raw(TempData["Message"])
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="text-center text-lg-start" style="background: linear-gradient(white, black); color: white;">
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        </section>
+
+        <section class="">
+            <div class="container text-center text-md-start mt-3">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>CLASSİC CARS 1969
+                        </h6>
+                        <a class="text-reset fw-bold" href="https://github.com/osmnemir"> Klasik Arabalar, Efsanevi Rüyaların Gerçeğe Dönüştüğü Yer</a>
+
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            ÜRÜNLER
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Chevrolet</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Ford</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Mercury</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Jaguar</a>
+                        </p>
+                    </div>
+
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            BAĞLANTILAR
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Ayarlar</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Siparişler</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Yardım</a>
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3"></i> Osmaniye/Merkez, NY 10012, TR</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            info@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i>05452556120</p>
+                        <p><i class="fas fa-print me-3"></i>05452556120</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2023 Copyright:
+            <a class="text-reset fw-bold" href="https://github.com/osmnemir">Osman EMİR</a>
+        </div>
+    </footer>
+
+
+
+
+
+    <script src="~/tema2/js/jquery-3.3.1.min.js"></script>
+    <script src="~/tema2/js/popper.min.js"></script>
+    <script src="~/tema2/js/bootstrap.min.js"></script>
+    <script src="~/tema2/js/jquery.sticky.js"></script>
+    <script src="~/tema2/js/main.js"></script>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+@* <!DOCTYPE html>
+<html lang="tr">
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - OtoServis.WebUI</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/OtoServis.WebUI.styles.css" asp-append-version="true" />
+    <style>
+
+
+
+
+        .navbar {
+            background-color: #000;
+        }
+
+        .navbar-brand {
+            color: #fff;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #fff;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff !important;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #bbb !important;
+            }
+
+        .form-control {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .btn-primary {
+            background-color: #333;
+            border-color: #333;
+            color: #fff;
+        }
+
+            .btn-primary:hover {
+                background-color: #555;
+                border-color: #555;
+            }
+
+        .btn-warning {
+            background-color: #f00;
+            border-color: #f00;
+            color: #fff;
+        }
+
+            .btn-warning:hover {
+                background-color: #c00;
+                border-color: #c00;
+            }
+
+    </style>
+
+
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm" style="background: linear-gradient(black, white); border-bottom: 1px solid #ccc;" aria-label="Main navigation">
+            <div class="container-fluid d-flex flex-column align-items-center">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="color: white; text-align: center;">
+                    <img src="/Img/Cars/360_F_574670321_rsGZohWIp4so9UZIoq3hbuTF4aSUZYRn.png" alt="Classic Car's Logo" style="height: 30px; width: auto; margin-right: 10px;"> Classic Car's
+                </a>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" style="margin-top: 10px;">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index" style="color: white; text-align: center;">Ana Sayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Privacy" style="color: white; text-align: center;">Kategoriler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Arac" asp-action="List" style="color: white; text-align: center;">Tüm Araçlarımız</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
+                <div class="d-flex justify-content-end" style="margin-top: 10px;">
+                    <form class="col-12 col-lg-auto me-3" role="search" asp-action="Ara" asp-controller="Arac" method="get">
+                        <div class="input-group">
+                            <input name="q" type="search" class="form-control form-control-dark text-bg-dark" placeholder="Ara..." aria-label="Search">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="bi bi-search"></i> Ara
+                            </button>
+                        </div>
+                    </form>
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Account" asp-action="Index" class="btn btn-primary me-2">
+                            <i class="bi bi-person"></i> Hesabım
+                        </a>
+                        <a asp-controller="Account" asp-action="Logout" class="btn btn-warning">
+                            <i class="bi bi-box-arrow-right"></i> Oturumu Kapat
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-primary me-2">
+                            <i class="bi bi-door-open"></i> Giriş
+                        </a>
+                        <a asp-controller="Account" asp-action="Register" class="btn btn-warning">
+                            <i class="bi bi-person-plus"></i> Kaydol
+                        </a>
+                    }
+                </div>
+
+
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        @Html.Raw(TempData["Message"])
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="text-center text-lg-start" style="background: linear-gradient(white, black); color: white;">
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        </section>
+
+        <section class="">
+            <div class="container text-center text-md-start mt-3">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>CLASSİC CARS 1969
+                        </h6>
+                        <p>
+                            Klasik Arabalar, Efsanevi Rüyaların Gerçeğe Dönüştüğü Yer
+                        </p>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            ÜRÜNLER
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Chevrolet</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Ford</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Mercury</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Jaguar</a>
+                        </p>
+                    </div>
+
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            BAĞLANTILAR
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Ayarlar</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Siparişler</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Yardım</a>
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3"></i> Osmaniye/Merkez, NY 10012, TR</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            info@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i>05452556120</p>
+                        <p><i class="fas fa-print me-3"></i>05452556120</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2023 Copyright:
+            <a class="text-reset fw-bold" href="https://github.com/osmnemir">Osman EMİR</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
+ *@

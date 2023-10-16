@@ -1,0 +1,127 @@
+﻿@model HomePageViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    font-face {
+        font-family: 'HandwritingFont';
+        src: url('/path/to/your/custom-font.woff') format('woff');
+        /* Add additional formats if needed */
+    }
+
+    /* Apply the custom font to specific elements */
+    .custom-handwriting-font {
+        font-family: 'HandwritingFont', cursive;
+    }
+
+    #carouselExampleCaptions {
+        width: 100%;
+        max-height: 600px;
+        overflow: hidden;
+        position: relative; /* Needed for button positioning */
+    }
+
+    .carousel-inner {
+        width: 100%;
+        max-height: 600px;
+    }
+
+    .carousel-item {
+        width: 100%;
+        max-height: 600px;
+    }
+
+    .carousel-item img {
+        object-fit: cover;
+        width: 100%;
+        max-height: 600px;
+    }
+
+    .carousel-caption.custom-handwriting-font {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid #fff;
+    }
+
+    .carousel-caption.custom-handwriting-font h5 {
+        color: #fff;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .carousel-caption.custom-handwriting-font p {
+        color: #fff;
+        font-size: 18px;
+    }
+
+    /* Semi-Transparent Button Styling */
+    .semi-transparent-button.custom-handwriting-font {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(52, 58, 64, 0.7); /* Adjust the opacity as needed */
+        color: #fff;
+        font-size: 20px;
+        text-decoration: none;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        padding: 15px 30px;
+    }
+</style>
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        @for (var i = 0; i < Model.Sliders.Count; i++)
+        {
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
+        }
+    </ol>
+    <div class="carousel-inner">
+        @foreach (var item in Model.Sliders)
+        {
+            <div class="carousel-item @(item == Model.Sliders.FirstOrDefault() ? "active" : "")">
+                <img src="/Img/Slider/@item.Resim" class="d-block w-100" alt="...">
+                <div class="carousel-caption custom-handwriting-font">
+                    <h5>@item.Baslik</h5>
+                    <p>@item.Aciklama</p>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Semi-Transparent Centered Button Overlay -->
+    <a href="tum-araclarimiz" class="semi-transparent-button custom-handwriting-font" style="font-family: 'RetroFont', cursive; font-style: italic; background: rgba(0, 0, 0, 0.7); color: white;">Tüm Araçlar İçin Tıklayınız</a>
+
+   
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" ariahidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </a>
+</div>
+
+<div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        @foreach (var item in Model.Aracs)
+        {
+            <div class="col mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="/Img/Cars/@item.Resim1" alt="...">
+                    <div class="product-details">
+                        <h5 class="product-name">@item.Marka.Name @item.Modeli @item.KasaTipi</h5>
+                        <p class="product-price">@item.Fiyati ₺</p>
+                        <div class="text-center">
+                            <a class="btn btn-outline-dark" href="/Arac/Index/@item.Id">İncele</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

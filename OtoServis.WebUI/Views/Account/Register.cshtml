@@ -1,0 +1,103 @@
+﻿@model Kullanici
+
+@{
+    ViewData["Title"] = "Üye Kayıt";
+}
+
+<style>
+    /* Style the form container */
+    .form-container {
+        background: linear-gradient(to bottom, #000, #fff);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        color: #333;
+    }
+
+    /* Style form labels */
+    .form-group label {
+        font-weight: bold;
+    }
+
+    /* Style form inputs */
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #333;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Style the submit button */
+    .btn-primary {
+        background-color: #000;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Add hover effect to the submit button */
+    .btn-primary:hover {
+        background-color: #fff;
+        color: #000;
+    }
+
+    /* Animation for the form container */
+    keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .form-container {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+</style>
+
+<h1>Üye Kayıt</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4 form-container">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Adi" class="control-label"></label>
+                <input asp-for="Adi" class="form-control" />
+                <span asp-validation-for="Adi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Soyadi" class="control-label"></label>
+                <input asp-for="Soyadi" class="form-control" />
+                <span asp-validation-for="Soyadi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefon" class="control-label"></label>
+                <input asp-for="Telefon" class="form-control" />
+                <span asp-validation-for="Telefon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sifre" class="control-label"></label>
+                <input asp-for="Sifre" type="password" class="form-control" />
+                <span asp-validation-for="Sifre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="GirişYap" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

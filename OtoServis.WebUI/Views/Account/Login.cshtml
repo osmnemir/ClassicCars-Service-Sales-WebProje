@@ -1,0 +1,73 @@
+﻿@model CustomerLoginViewModel
+
+@{
+    ViewData["Title"] = "Üye Girişi";
+}
+<!-- Add this line to include Font Awesome CSS (you can use a CDN) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<style>
+    /* Custom CSS for the gradient background */
+    body {
+        background: linear-gradient(0deg, #000, #fff); /* Black to white gradient background */
+        color: #333; /* Dark text color for better readability */
+    }
+
+    h1 {
+        text-align: center;
+        padding: 20px;
+        color: #fff; /* White text color for the title */
+    }
+
+    .form-container {
+        background: #fff; /* White background for the form container */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    }
+
+    .form-group label {
+        color: #000; /* Black text color for form labels */
+    }
+
+    .form-control {
+        background: #eee; /* Light gray background for form inputs */
+        color: #000; /* Black text color for form inputs */
+    }
+
+    .btn-primary {
+        background: #000; /* Black background for the button */
+        color: #fff; /* White text color for the button */
+    }
+</style>
+
+<h1>Üye Girişi</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4 form-container">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Sifre" class="control-label"></label>
+                <div class="input-group">
+                    <input asp-for="Sifre" type="password" class="form-control" />
+                    <div class="input-group-append">
+                        <span class="input-group-text"><i class="fas fa-sign-in-alt"></i></span> <!-- Font Awesome login icon -->
+                    </div>
+                </div>
+                <span asp-validation-for="Sifre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Giriş Yap" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

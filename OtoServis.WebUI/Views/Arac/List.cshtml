@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Arac>
+@{
+    ViewData["Title"] = "Tüm Araçlar";
+}
+
+<style>
+    /* Custom CSS for the gradient background */
+    body {
+        background: linear-gradient(0deg, #000, #fff); /* Black to white gradient background */
+        color: #333; /* Dark text color for better readability */
+    }
+
+    h1 {
+        text-align: center;
+        padding: 20px;
+        color: #fff; /* White text color for the title */
+    }
+
+    .gradient-bg {
+        background: rgba(255, 255, 255, 0.8); /* Semi-transparent white container background */
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    }
+
+    .card {
+        border: none;
+        border-radius: 10px;
+        background-color: #fff; /* White card background */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Card box shadow */
+    }
+
+    .card-img-top {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .product-details {
+        padding: 10px;
+    }
+
+    .product-name {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .product-price {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .btn-outline-dark {
+        background-color: #333; /* Dark gray button background color */
+        color: #fff; /* White text color for the button */
+        border: none;
+    }
+
+        .btn-outline-dark:hover {
+            background-color: #555; /* Slightly darker gray on hover */
+        }
+
+    body {
+        background: linear-gradient(0deg, #000, #fff); /* Black to white gradient background */
+        color: #333; /* Dark text color for better readability */
+    }
+
+    h1 {
+        text-align: center;
+        padding: 20px;
+        color: #fff; /* White text color for the title */
+        font-family: Impact, Arial, sans-serif; /* Specify the "Impact" font */
+        font-style: italic; /* Italic font style */
+        text-shadow: 
+            3px 3px 0px rgba(0, 0, 0, 0.2), /* Shadow with offset for the distressed effect */
+            3px 3px 0px rgba(0, 0, 0, 0.2), /* You can add more layers for stronger effect */
+            3px 3px 3px rgba(0, 0, 0, 0.2); /* Slight 3D effect */
+
+    }
+
+    .gradient-bg {
+        background: rgba(255, 255, 255, 0.8); /* Semi-transparent white container background */
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    }
+
+</style>
+
+<h1>Tüm Araçlarımız</h1>
+
+<div class="container px-4 px-lg-5 gradient-bg">
+    <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="/Img/Cars/@item.Resim1" alt="Car Image">
+                    <div class="product-details">
+                        <h5 class="product-name">@item.Marka.Name @item.Modeli @item.KasaTipi</h5>
+                        <p class="product-price">@item.Fiyati ₺</p>
+                        <div class="text-center">
+                            <a class="btn btn-outline-dark" href="/Arac/Index/@item.Id">İncele</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

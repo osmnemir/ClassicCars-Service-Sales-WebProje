@@ -1,0 +1,69 @@
+﻿@model OtoServis.Entities.Kullanici
+
+@{
+    ViewData["Title"] = "Kullanıcı Ekle";
+}
+
+<h1>Kullanıcı Ekle</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Adi" class="control-label">Adı</label>
+                <input asp-for="Adi" class="form-control" />
+                <span asp-validation-for="Adi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Soyadi" class="control-label">Soyadı</label>
+                <input asp-for="Soyadi" class="form-control" />
+                <span asp-validation-for="Soyadi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">E-posta</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Telefon" class="control-label">Telefon</label>
+                <input asp-for="Telefon" class="form-control" />
+                <span asp-validation-for="Telefon" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="KullaniciAdi" class="control-label">Kullanıcı Adı</label>
+                <input asp-for="KullaniciAdi" class="form-control" />
+                <span asp-validation-for="KullaniciAdi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Sifre" class="control-label">Şifre</label>
+                <input asp-for="Sifre" type="password" class="form-control" />
+                <span asp-validation-for="Sifre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <input class="form-check-input" asp-for="AktifMi" />
+                <label class="form-check-label" for="AktifMi">Aktif Mi?</label>
+            </div>
+
+          
+
+            <div class="form-group">
+                <label asp-for="RolId" class="control-label">Rol</label>
+                <select asp-for="RolId" class="form-select" asp-items="ViewBag.RolId"></select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Ekle</button>
+            </div>
+        </form>
+    </div>
+</div>

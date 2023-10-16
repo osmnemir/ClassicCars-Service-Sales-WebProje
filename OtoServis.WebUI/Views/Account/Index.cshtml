@@ -1,0 +1,92 @@
+﻿@model Kullanici
+@{
+    ViewData["Title"] = "Kullanıcı Bilgilerim";
+}
+
+<style>
+    body {
+        background: linear-gradient(to bottom, #000, #fff);
+        color: #fff; /* Metin rengi - Beyaz olarak değiştirildi */
+    }
+
+    .form-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background: transparent; /* Formun arka planını temizleyin */
+    }
+
+    .gradient-button {
+        background: linear-gradient(to bottom, #000, #fff);
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+        .gradient-button:hover {
+            background: linear-gradient(to bottom, #fff, #000);
+            color: #fff;
+        }
+</style>
+
+<h1>Kullanıcı Bilgilerim</h1>
+
+<hr />
+
+<div class="form-container">
+    <form asp-action="UserUpdate">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="EklenmeTarihi" />
+        <input type="hidden" asp-for="UserGuid" />
+        <input type="hidden" asp-for="RolId" />
+
+        <div class="form-group">
+            <label asp-for="Adi" class="control-label">Adı</label>
+            <input asp-for="Adi" class="form-control" />
+            <span asp-validation-for="Adi" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Soyadi" class="control-label">Soyadı</label>
+            <input asp-for="Soyadi" class="form-control" />
+            <span asp-validation-for="Soyadi" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="control-label">Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Telefon" class="control-label">Telefon</label>
+            <input asp-for="Telefon" class="form-control" />
+            <span asp-validation-for="Telefon" class="text-danger"></span>
+        </div>
+
+       
+
+        <div class="form-group">
+            <label asp-for="Sifre" class="control-label">Şifre</label>
+            <input asp-for="Sifre" class="form-control" type="password" />
+            <span asp-validation-for="Sifre" class="text-danger"></span>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" asp-for="AktifMi" />
+            <label class="form-check-label" for="AktifMi">Aktif Mi?</label>
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="gradient-button">Kaydet</button>
+        </div>
+    </form>
+</div>
